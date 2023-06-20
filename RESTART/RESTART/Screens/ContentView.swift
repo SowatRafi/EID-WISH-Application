@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    // SOWAD: - PROPERTY
+    @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    // SOWAD: - BODY
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            if isOnboardingViewActive {
+                OnboardingView()
+            } else {
+                HomeView()
+            }
         }
-        .padding()
     }
 }
-
+// SOWAD: - PREVIEW
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 14 Pro Max")
     }
 }
