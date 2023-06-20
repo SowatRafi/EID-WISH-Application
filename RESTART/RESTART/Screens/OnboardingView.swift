@@ -8,25 +8,55 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    // SOWAD: - PROPERTY
+    // RESTART: - PROPERTY
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
-    // SOWAD: - BODY
+    // RESTART: - BODY
     var body: some View {
-        // VStack
-        VStack(spacing: 20) {
-            Text("Onboarding").font(.largeTitle)
-            // Button
-            Button(action: {
-                isOnboardingViewActive = false
-            }) //: Button
-            { // Text
-                Text("Start")
-            } //: Text
-            
-        } //: VStack
+        // ZStack
+        ZStack {
+            Color("ColorBlue").ignoresSafeArea(.all, edges: .all)
+            // VStack
+            VStack(spacing: 20) {
+                // RESTART: - HEADER
+                Spacer()
+                
+                VStack(spacing: 0) {
+                    Text("Share")
+                        .font(.system(size: 60))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                    
+                    Text("""
+It's not how much we give but how much love we put into giving.
+""")
+                    .font(.title3)
+                    .fontWeight(.light)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 10)
+                } //: HEADER
+                // RESTART: - CENTER
+                ZStack {
+                    ZStack {
+                        
+                        Circle()
+                            .stroke( .white.opacity(0.2), lineWidth: 40)
+                            .frame(width: 260, height: 260, alignment: .center)
+                        
+                        Circle()
+                            .stroke( .white.opacity(0.2), lineWidth: 80)
+                            .frame(width: 260, height: 260, alignment: .center)
+                    } //: ZStack
+                    Image("character-1")
+                        .resizable()
+                        .scaledToFit()
+                } //: CENTER
+                // RESTART: FOOTER
+            } //: VStack
+        } //: ZStack
     }
 }
-// SOWAD: - PREVIEW
+// RESTART: - PREVIEW
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView()
