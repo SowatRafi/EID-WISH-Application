@@ -21,13 +21,21 @@ struct OnboardingView: View {
                 Spacer()
                 
                 VStack(spacing: 0) {
-                    Text("Share")
+                    Text("ঈদ মুবারক")
                         .font(.system(size: 60))
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
+                        .padding(.bottom, 20)
+                    
+                    Text("EID MUBARAK")
+                        .font(.system(size: 30))
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding(.all)
+                        .opacity(0.7)
                     
                     Text("""
-It's not how much we give but how much love we put into giving.
+It's not how much we give, but how much love we put into giving.
 """)
                     .font(.title3)
                     .fontWeight(.light)
