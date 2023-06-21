@@ -37,7 +37,7 @@ It's not how much we give but how much love we put into giving.
                 } //: HEADER
                 // RESTART: - CENTER
                 ZStack {
-                    
+                    CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
                     Image("character-1")
                         .resizable()
                         .scaledToFit()
