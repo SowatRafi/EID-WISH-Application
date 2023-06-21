@@ -83,7 +83,8 @@ It's not how much we give but how much love we put into giving.
                         DragGesture()
                             .onChanged{gesture in
                                 //          It will only run when the draggin has been started in the right direction.
-                                if gesture.translation.width > 0 {
+                                // && (condition) prevents the red button to go outside
+                                if gesture.translation.width > 0 && buttonOffset <= buttonWidth - 80 {
                                     // We are capturing the actual drag movement's width for later use.
                                     buttonOffset = gesture.translation.width
                                 }
