@@ -13,19 +13,42 @@ struct HomeView: View {
     // SOWAD: - BODY
     var body: some View {
         // VStack
-        VStack(spacing: 20) {
-            Text("Home").font(.largeTitle)
-            // Button
-            Button(action: {
-                isOnboardingViewActive = true
-            }) //: Button
-            { // Text
-                Text("Restart")
-            } //: Text
-            
-        } //: VStack
+        VStack {
+            // RESTART - HEADER
+            Spacer()
+            Image("character-2")
+                .resizable()
+                .scaledToFit()
+                .padding()
+            // RESTART - CENTER
+            Text("The time that leads to mastery is dependent on the intensity of our focus.")
+                .font(.title3)
+                .fontWeight(.light)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding()
+            // RESTART - FOOTER
+            Spacer()
+                // Button
+                Button(action: {
+                    isOnboardingViewActive = true
+                }) //: Button
+                {
+                    // Image
+                    Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                        .imageScale(.large)
+                    // Text
+                    Text("Restart")
+                        .font(.system(.title3, design: .rounded))
+                        .fontWeight(.bold)
+                } //: BUTTON
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+                .controlSize(.large)
+                
+            } //:VStack
+        } //: BODY
     }
-}
 // SOWAD: - PREVIEW
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
