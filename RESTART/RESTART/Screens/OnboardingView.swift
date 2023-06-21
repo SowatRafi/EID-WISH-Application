@@ -14,6 +14,9 @@ struct OnboardingView: View {
     @State private var imageOffset: CGSize = .zero
     @State private var indicatorOpacity: Double = 1.0
     @State private var textTitle: String = "ঈদ মুবারক"
+    @State private var bodyMessage: String = """
+                    দানের পরিমাণ নয়, দান করার সময় আমরা কতটা ভালোবাসা দিয়ে দেই, সেটাই গুরুত্বপূর্ণ।
+                    """
     // RESTART: - BODY
     var body: some View {
         // ZStack
@@ -30,15 +33,15 @@ struct OnboardingView: View {
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
                         .transition(.opacity)
+                        .id(textTitle) // We use ID method to tell SwiftUI that a view is NO LONGER the same view.
                         .padding(.all, 20)
                     
-                    Text("""
-It's not how much we give, but how much love we put into giving.
-""")
+                    Text(bodyMessage)
                     .font(.title3)
                     .fontWeight(.light)
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
+                    .id(bodyMessage)
                     .padding(.horizontal, 10)
                 } //: HEADER
                 .opacity(isAnimating ? 1 : 0)
@@ -69,6 +72,9 @@ It's not how much we give, but how much love we put into giving.
                                         withAnimation(.linear(duration: 0.25)) {
                                             indicatorOpacity = 0
                                             textTitle = "EID MUBARAK"
+                                            bodyMessage = """
+It's not how much we give, but how much love we put into giving.
+"""
                                         }
                                     }
                                 }
@@ -78,6 +84,10 @@ It's not how much we give, but how much love we put into giving.
                                     withAnimation(.linear(duration: 0.25)) {
                                         indicatorOpacity = 1
                                         textTitle = "ঈদ মুবারক"
+                                        bodyMessage = """
+                    দানের পরিমাণ নয়, দান করার সময় আমরা কতটা ভালোবাসা দিয়ে দেই, সেটাই গুরুত্বপূর্ণ।
+                    """
+
                                     }
                                 }
                         ) //: GESTURE
