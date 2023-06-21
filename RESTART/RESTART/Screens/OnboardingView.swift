@@ -57,10 +57,12 @@ It's not how much we give, but how much love we put into giving.
                         .animation(.easeOut(duration: 0.5), value: isAnimating)
                         // Accelerate the movement
                         .offset(x: imageOffset.width * 1.2, y: 0)
+                        // ROTATION EFFCT GIVEN
+                        .rotationEffect(.degrees(Double(imageOffset.width / 20)))
                         .gesture(
                             DragGesture()
                                 .onChanged{ gesture in
-                                    if abs(imageOffset.width) <= 100 {
+                                    if abs(imageOffset.width) <= 150 {
                                         imageOffset = gesture.translation
                                     }
                                 }
