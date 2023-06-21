@@ -13,6 +13,7 @@ struct OnboardingView: View {
     @State private var isAnimating: Bool = false
     @State private var imageOffset: CGSize = .zero
     @State private var indicatorOpacity: Double = 1.0
+    @State private var textTitle: String = "ঈদ মুবারক"
     // RESTART: - BODY
     var body: some View {
         // ZStack
@@ -24,18 +25,12 @@ struct OnboardingView: View {
                 Spacer()
                 
                 VStack(spacing: 0) {
-                    Text("ঈদ মুবারক")
-                        .font(.system(size: 60))
+                    Text(textTitle)
+                        .font(.system(size: 50))
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
-                        .padding(.bottom, 20)
-                    
-                    Text("EID MUBARAK")
-                        .font(.system(size: 30))
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .padding(.all)
-                        .opacity(0.7)
+                        .transition(.opacity)
+                        .padding(.all, 20)
                     
                     Text("""
 It's not how much we give, but how much love we put into giving.
@@ -73,6 +68,7 @@ It's not how much we give, but how much love we put into giving.
                                         
                                         withAnimation(.linear(duration: 0.25)) {
                                             indicatorOpacity = 0
+                                            textTitle = "EID MUBARAK"
                                         }
                                     }
                                 }
@@ -81,6 +77,7 @@ It's not how much we give, but how much love we put into giving.
                                     
                                     withAnimation(.linear(duration: 0.25)) {
                                         indicatorOpacity = 1
+                                        textTitle = "ঈদ মুবারক"
                                     }
                                 }
                         ) //: GESTURE
