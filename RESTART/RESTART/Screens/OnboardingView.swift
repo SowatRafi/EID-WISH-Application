@@ -1,15 +1,15 @@
-//
 //  OnboardingView.swift
 //  RESTART
 //
 //  Created by Sowad Hossain Rafi on 20/6/23.
-//
 
 import SwiftUI
 
 struct OnboardingView: View {
     // RESTART: - PROPERTY
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
+    @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
+    @State private var buttonOffset: CGFloat = 0
     // RESTART: - BODY
     var body: some View {
         // ZStack
@@ -78,15 +78,23 @@ It's not how much we give but how much love we put into giving.
                         }
                         .foregroundColor(.white)
                     .frame(width: 80, height: 80, alignment: .center)
-                    .onTapGesture {
-                        isOnboardingViewActive = false
-                    }
+                    .offset(x: buttonOffset)
+                    .gesture(
+                        DragGesture()
+                            .onChanged{gesture in
+                                //          It will only run when the draggin has been started in the right direction.
+                                if gesture.translation.width > 0 {
+                                    // We are capturing the actual drag movement's width for later use.
+                                    buttonOffset = gesture.translation.width
+                                }
+                            }
+                    ) //: GESTURE
                         
                         Spacer()
                     }
                     
                 } //: ZStack //: FOOTER
-                .frame(height: 80, alignment: .center)
+                .frame(width: buttonWidth, height: 80, alignment: .center)
                 .padding()
             } //: VStack
         } //: ZStack

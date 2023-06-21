@@ -1,9 +1,7 @@
-//
 //  ContentView.swift
 //  RESTART
 //
 //  Created by Sowad Hossain Rafi on 20/6/23.
-//
 
 import SwiftUI
 
