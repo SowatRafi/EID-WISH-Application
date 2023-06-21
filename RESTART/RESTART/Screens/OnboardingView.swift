@@ -90,7 +90,13 @@ It's not how much we give but how much love we put into giving.
                                 }
                             }
                             .onEnded{ _ in
-                                buttonOffset = 0
+                                if buttonOffset > buttonWidth / 2 {
+                                    buttonOffset = buttonWidth - 80
+                                    isOnboardingViewActive = false
+                                } else {
+                                    buttonOffset = 0
+                                    
+                                }
                             }
                     ) //: GESTURE
                         
