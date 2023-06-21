@@ -89,6 +89,9 @@ It's not how much we give but how much love we put into giving.
                                     buttonOffset = gesture.translation.width
                                 }
                             }
+                            .onEnded{ _ in
+                                buttonOffset = 0
+                            }
                     ) //: GESTURE
                         
                         Spacer()
