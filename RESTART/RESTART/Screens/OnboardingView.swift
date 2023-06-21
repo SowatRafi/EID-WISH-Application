@@ -60,7 +60,7 @@ It's not how much we give, but how much love we put into giving.
                         .gesture(
                             DragGesture()
                                 .onChanged{ gesture in
-                                    if abs(imageOffset.width) <= 87 {
+                                    if abs(imageOffset.width) <= 100 {
                                         imageOffset = gesture.translation
                                     }
                                 }
@@ -68,6 +68,7 @@ It's not how much we give, but how much love we put into giving.
                                     imageOffset = .zero
                                 }
                         ) //: GESTURE
+                        .animation(.easeOut(duration: 1), value: imageOffset)
                 } //: CENTER
                 // RESTART: FOOTER
                 ZStack {
