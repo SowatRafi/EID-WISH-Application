@@ -10,6 +10,7 @@ struct OnboardingView: View {
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = true
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset: CGFloat = 0
+    @State private var isAnimating: Bool = false
     // RESTART: - BODY
     var body: some View {
         // ZStack
@@ -43,12 +44,17 @@ It's not how much we give, but how much love we put into giving.
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 10)
                 } //: HEADER
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : -40)
+                .animation(.easeOut(duration: 1), value: isAnimating)
                 // RESTART: - CENTER
                 ZStack {
                     CircleGroupView(ShapeColor: .white, ShapeOpacity: 0.2)
                     Image("character-1")
                         .resizable()
                         .scaledToFit()
+                        .opacity(isAnimating ? 1 : 0)
+                        .animation(.easeOut(duration: 0.5), value: isAnimating)
                 } //: CENTER
                 // RESTART: FOOTER
                 ZStack {
@@ -117,6 +123,9 @@ It's not how much we give, but how much love we put into giving.
                 .padding()
             } //: VStack
         } //: ZStack
+        .onAppear(perform: {
+            isAnimating = true
+        })
     }
 }
 // RESTART: - PREVIEW
