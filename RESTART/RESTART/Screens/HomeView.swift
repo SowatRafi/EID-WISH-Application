@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     // SOWAD: - PROPERTY
     @AppStorage("onboarding") var isOnboardingViewActive: Bool = false
+    @State private var isAnimating: Bool = false
     // SOWAD: - BODY
     var body: some View {
         // VStack
@@ -23,6 +24,13 @@ struct HomeView: View {
                     .resizable()
                     .scaledToFit()
                 .padding()
+                .offset(y: isAnimating ? 35 : -35)
+                .animation(
+                    Animation
+                        .easeInOut(duration: 4)
+                        .repeatForever()
+                    , value: isAnimating
+                )
             }
             // RESTART - CENTER
             Text("The time that leads to mastery is dependent on the intensity of our focus.")
