@@ -11,7 +11,7 @@ struct OnboardingView: View {
     @State private var buttonWidth: Double = UIScreen.main.bounds.width - 80
     @State private var buttonOffset: CGFloat = 0
     @State private var isAnimating: Bool = false
-    // RESTART: - BODY
+    @State private var imageOffset: CGSize = .zero    // RESTART: - BODY
     var body: some View {
         // ZStack
         ZStack {
@@ -55,6 +55,19 @@ It's not how much we give, but how much love we put into giving.
                         .scaledToFit()
                         .opacity(isAnimating ? 1 : 0)
                         .animation(.easeOut(duration: 0.5), value: isAnimating)
+                        // Accelerate the movement
+                        .offset(x: imageOffset.width * 1.2, y: 0)
+                        .gesture(
+                            DragGesture()
+                                .onChanged{ gesture in
+                                    if abs(imageOffset.width) <= 87 {
+                                        imageOffset = gesture.translation
+                                    }
+                                }
+                                .onEnded{_ in
+                                    imageOffset = .zero
+                                }
+                        ) //: GESTURE
                 } //: CENTER
                 // RESTART: FOOTER
                 ZStack {
