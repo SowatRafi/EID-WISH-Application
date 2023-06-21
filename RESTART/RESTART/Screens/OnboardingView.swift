@@ -90,7 +90,7 @@ It's not how much we give, but how much love we put into giving.
                                 .padding(8)
                             Image(systemName: "chevron.right.2")
                                 .font(.system(size: 24, weight: .bold))
-                        }
+                        } //: ZStack
                         .foregroundColor(.white)
                     .frame(width: 80, height: 80, alignment: .center)
                     .offset(x: buttonOffset)
@@ -116,11 +116,15 @@ It's not how much we give, but how much love we put into giving.
                     ) //: GESTURE
                         
                         Spacer()
-                    }
+                    } //: HStack
                     
-                } //: ZStack //: FOOTER
+                } //: ZStack
+                //: FOOTER
                 .frame(width: buttonWidth, height: 80, alignment: .center)
                 .padding()
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : 40)
+                .animation(.easeOut(duration: 1), value: isAnimating)
             } //: VStack
         } //: ZStack
         .onAppear(perform: {
