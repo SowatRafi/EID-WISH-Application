@@ -17,6 +17,7 @@ struct OnboardingView: View {
     @State private var bodyMessage: String = """
                     দানের পরিমাণ নয়, দান করার সময় আমরা কতটা ভালোবাসা দিয়ে দেই, সেটাই গুরুত্বপূর্ণ।
                     """
+    let hapticFeedback = UINotificationFeedbackGenerator()
     // RESTART: - BODY
     var body: some View {
         // ZStack
@@ -154,9 +155,12 @@ It's not how much we give, but how much love we put into giving.
                             .onEnded{ _ in
                                 withAnimation(Animation.easeOut(duration: 0.4)) {
                                     if buttonOffset > buttonWidth / 2 {
+                                        hapticFeedback.notificationOccurred(.success)
+                                        playSound(sound: "chimeup", type: "mp3")
                                         buttonOffset = buttonWidth - 80
                                         isOnboardingViewActive = false
                                     } else {
+                                        hapticFeedback.notificationOccurred(.warning)
                                         buttonOffset = 0
                                         
                                     }
