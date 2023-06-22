@@ -1,2 +1,2 @@
-# RESTART
-Advance iOS App Design with SwiftUI
+# EID WISH APPLICATION
+Advanced iOS App Design with SwiftUI
