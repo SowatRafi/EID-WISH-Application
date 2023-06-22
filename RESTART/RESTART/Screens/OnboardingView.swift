@@ -179,6 +179,7 @@ It's not how much we give, but how much love we put into giving.
         .onAppear(perform: {
             isAnimating = true
         })
+        .preferredColorScheme(.dark)
     }
 }
 // RESTART: - PREVIEW
